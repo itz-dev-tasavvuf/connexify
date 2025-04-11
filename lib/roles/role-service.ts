@@ -1,4 +1,4 @@
-import { RoleWithDetails } from '@/lib/supabase/types';
+import { RoleWithDetails } from '@/lib/types/roles';
 import { mockRoles } from '@/lib/mock/data';
 
 export async function fetchRoles(filters?: {

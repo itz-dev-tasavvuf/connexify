@@ -1,7 +1,45 @@
-import { RoleWithDetails, Startup, Skill } from '@/lib/supabase/types';
+import { RoleWithDetails } from '@/lib/types/roles';
+import { Startup } from '@/lib/types/startups';
+import { Skill } from '@/lib/types/skills';
 
 // Mock Skills
 export const mockSkills: Skill[] = [
+  { 
+    id: '1', 
+    name: 'React', 
+    category: 'Frontend', 
+    created_at: new Date().toISOString() 
+  },
+  { 
+    id: '2', 
+    name: 'Node.js', 
+    category: 'Backend', 
+    created_at: new Date().toISOString() 
+  },
+  { 
+    id: '3', 
+    name: 'Python', 
+    category: 'Backend', 
+    created_at: new Date().toISOString() 
+  },
+  { 
+    id: '4', 
+    name: 'UI/UX Design', 
+    category: 'Design', 
+    created_at: new Date().toISOString() 
+  },
+  { 
+    id: '5', 
+    name: 'Digital Marketing', 
+    category: 'Marketing', 
+    created_at: new Date().toISOString() 
+  },
+  { 
+    id: '6', 
+    name: 'Data Analysis', 
+    category: 'Data', 
+    created_at: new Date().toISOString() 
+  },
   { id: '1', name: 'React', category: 'Frontend', created_at: new Date().toISOString() },
   { id: '2', name: 'Node.js', category: 'Backend', created_at: new Date().toISOString() },
   { id: '3', name: 'Python', category: 'Backend', created_at: new Date().toISOString() },
@@ -23,7 +61,10 @@ export const mockStartups: Startup[] = [
     logo_url: null,
     created_at: new Date().toISOString(),
     created_by: 'user1',
-    updated_at: new Date().toISOString()
+    updated_at: new Date().toISOString(),
+    skills: [],
+    team_size: 1,
+    is_actively_hiring: false,
   },
   {
     id: '2',
@@ -36,7 +77,10 @@ export const mockStartups: Startup[] = [
     logo_url: null,
     created_at: new Date().toISOString(),
     created_by: 'user2',
-    updated_at: new Date().toISOString()
+    updated_at: new Date().toISOString(),
+    skills: [],
+    team_size: 1,
+    is_actively_hiring: false,
   },
   {
     id: '3',
@@ -49,7 +93,10 @@ export const mockStartups: Startup[] = [
     logo_url: null,
     created_at: new Date().toISOString(),
     created_by: 'user3',
-    updated_at: new Date().toISOString()
+    updated_at: new Date().toISOString(),
+    skills: [],
+    team_size: 1,
+    is_actively_hiring: false,
   }
 ];
 
@@ -68,10 +115,12 @@ export const mockRoles: RoleWithDetails[] = [
     status: 'open',
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString(),
-    startup: mockStartups[0],
     skills: [
-      { id: '1', role_id: '1', skill_id: '1', importance: 'required', created_at: new Date().toISOString(), skill: mockSkills[0] },
-      { id: '2', role_id: '1', skill_id: '4', importance: 'preferred', created_at: new Date().toISOString(), skill: mockSkills[3] }
+      { skill_id: '1', skill_name: 'React' },
+      { skill_id: '4', skill_name: 'UI/UX Design' },
+      { skill_id: '1', skill_name: 'React' },
+      { skill_id: '4', skill_name: 'UI/UX Design' }
+
     ],
     application_count: 5
   },
@@ -88,10 +137,12 @@ export const mockRoles: RoleWithDetails[] = [
     status: 'open',
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString(),
-    startup: mockStartups[1],
     skills: [
-      { id: '3', role_id: '2', skill_id: '4', importance: 'required', created_at: new Date().toISOString(), skill: mockSkills[3] },
-      { id: '4', role_id: '2', skill_id: '6', importance: 'required', created_at: new Date().toISOString(), skill: mockSkills[5] }
+      { skill_id: '4', skill_name: 'UI/UX Design' },
+      { skill_id: '6', skill_name: 'Data Analysis' },
+      { skill_id: '4', skill_name: 'UI/UX Design' },
+      { skill_id: '6', skill_name: 'Data Analysis' }
+
     ],
     application_count: 3
   },
@@ -108,10 +159,11 @@ export const mockRoles: RoleWithDetails[] = [
     status: 'open',
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString(),
-    startup: mockStartups[2],
     skills: [
-      { id: '5', role_id: '3', skill_id: '5', importance: 'required', created_at: new Date().toISOString(), skill: mockSkills[4] }
+      { skill_id: '5', skill_name: 'Digital Marketing' },
+      { skill_id: '5', skill_name: 'Digital Marketing' }
     ],
     application_count: 7
-  }
+  },
+
 ];

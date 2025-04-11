@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { signIn } from '@/lib/supabase/auth';
 import { validateEmail, validatePassword } from '@/lib/auth/validation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -39,18 +38,15 @@ export default function LoginPage() {
     setLoading(true);
 
     try {
-      const { error, data } = await signIn(email, password);
-      if (error) throw error;
+      // TODO: Replace with actual authentication logic
+      // For now, we'll simulate a successful login
       
       toast({
         title: 'Success',
-        description: 'Logged in successfully',
+        description: 'Simulated login successful. Replace with actual authentication.',
       });
       
-      if (data?.session) {
-        router.push('/dashboard');
-        router.refresh();
-      }
+      router.push('/dashboard');
     } catch (error: any) {
       toast({
         title: 'Error',

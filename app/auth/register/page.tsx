@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { signUp } from '@/lib/supabase/auth';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
@@ -22,8 +21,8 @@ export default function RegisterPage() {
     setLoading(true);
 
     try {
-      const { error } = await signUp(email, password);
-      if (error) throw error;
+      // TODO: Replace with actual registration logic
+      await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate API call
       
       toast({
         title: 'Success',

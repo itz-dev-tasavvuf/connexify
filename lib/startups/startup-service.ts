@@ -1,4 +1,4 @@
-import { Startup } from '@/lib/supabase/types';
+import { Startup } from '@/lib/types/startups';
 import { mockStartups } from '@/lib/mock/data';
 
 export async function fetchStartups() {

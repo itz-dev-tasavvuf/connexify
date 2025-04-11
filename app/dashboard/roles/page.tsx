@@ -5,7 +5,7 @@ import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { fetchRoles } from '@/lib/roles/role-service';
-import { RoleWithDetails } from '@/lib/supabase/types';
+import { RoleWithDetails } from '@/lib/types/roles';
 import { Building2, MapPin, Clock } from 'lucide-react';
 
 export default function DashboardRolesPage() {
@@ -70,9 +70,9 @@ export default function DashboardRolesPage() {
             </div>
 
             <div className="flex flex-wrap gap-2 mb-4">
-              {role.skills.map(({ skill }) => (
-                <Badge key={skill.id} variant="secondary">
-                  {skill.name}
+              {role.skills.map(({ skill_id, skill_name }) => (
+                <Badge key={skill_id} variant="secondary">
+                  {skill_name}
                 </Badge>
               ))}
             </div>

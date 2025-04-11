@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { AuthButtons } from '@/components/auth/auth-buttons';
-import { getSession } from '@/lib/supabase/auth';
 import { Logo } from './logo';
 import { NavLinks } from './nav-links';
 import { MobileNav } from './mobile-nav';
@@ -16,8 +15,8 @@ export function Navbar() {
 
   useEffect(() => {
     const checkAuth = async () => {
-      const { session } = await getSession();
-      setIsAuthenticated(!!session);
+      // TODO: Implement Firebase auth check here
+      setIsAuthenticated(false); // Placeholder
     };
     
     checkAuth();

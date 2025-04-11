@@ -1,7 +1,7 @@
 'use client';
 
 import { RoleCard } from '@/components/roles/role-card';
-import { RoleWithDetails } from '@/lib/supabase/types';
+import { RoleWithDetails } from '@/lib/types/roles';
 
 interface RolesSectionProps {
   roles: RoleWithDetails[];

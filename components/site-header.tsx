@@ -3,19 +3,14 @@
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/theme-toggle';
-import { AuthButtons } from '@/components/auth/auth-buttons';
-import { getSession } from '@/lib/supabase/auth';
 import { Rocket } from 'lucide-react';
 import Link from 'next/link';
 
 export function SiteHeader() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const isAuthenticated = false;
 
   useEffect(() => {
-    const checkAuth = async () => {
-      const { session } = await getSession();
-      setIsAuthenticated(!!session);
-    };
+    const checkAuth = async () => {};
     
     checkAuth();
   }, []);
@@ -53,7 +48,7 @@ export function SiteHeader() {
           </nav>
           <div className="flex items-center space-x-4">
             <ThemeToggle />
-            <AuthButtons isAuthenticated={isAuthenticated} />
+            
           </div>
         </div>
       </div>

@@ -12,7 +12,6 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { useRouter } from 'next/navigation';
-import { signOut } from '@/lib/supabase/auth';
 import { useToast } from '@/hooks/use-toast';
 import {
   User,
@@ -25,19 +24,9 @@ export function UserNav() {
   const router = useRouter();
   const { toast } = useToast();
 
-  const handleSignOut = async () => {
-    const { error } = await signOut();
-    if (error) {
-      toast({
-        title: 'Error',
-        description: 'Failed to sign out',
-        variant: 'destructive',
-      });
-      return;
-    }
+  const handleSignOut = () => {
     router.push('/');
-    router.refresh();
-  };
+    };
 
   return (
     <DropdownMenu>

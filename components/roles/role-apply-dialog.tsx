@@ -7,10 +7,10 @@ import {
   DialogHeader,
   DialogTitle,
   DialogDescription,
-} from '@/components/ui/dialog';
+} from "@/components/ui/dialog";
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-import { RoleWithDetails } from '@/lib/supabase/types';
+import { RoleWithDetails } from '@/lib/types/roles';
 
 interface RoleApplyDialogProps {
   role: RoleWithDetails;

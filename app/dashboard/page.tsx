@@ -1,6 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { RoleWithDetails } from '@/lib/types/roles';
+import { Startup } from '@/lib/types/startups';
 import { Card } from '@/components/ui/card';
 import { StartupSection } from '@/components/dashboard/startup-section';
 import { RolesSection } from '@/components/dashboard/roles-section';
@@ -15,8 +17,8 @@ import {
 } from 'lucide-react';
 
 export default function DashboardPage() {
-  const [roles, setRoles] = useState([]);
-  const [startups, setStartups] = useState([]);
+  const [roles, setRoles] = useState<RoleWithDetails[]>([]);
+  const [startups, setStartups] = useState<Startup[]>([]);
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
 

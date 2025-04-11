@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import { StartupCard } from './startup-card';
-import { Startup } from '@/lib/supabase/types';
+import { Startup } from '@/lib/types/startups';
 import { Plus } from 'lucide-react';
 import Link from 'next/link';
 

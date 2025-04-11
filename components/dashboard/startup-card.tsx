@@ -3,7 +3,7 @@
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Building2, MapPin, Briefcase } from 'lucide-react';
-import { Startup } from '@/lib/supabase/types';
+import { Startup } from '@/lib/types/startups';
 import Link from 'next/link';
 
 interface StartupCardProps {
