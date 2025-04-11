@@ -1,0 +1,81 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import { RoleCard } from '@/components/roles/role-card';
+import { RoleFilters } from '@/components/roles/role-filters';
+import { fetchRoles, applyToRole } from '@/lib/roles/role-service';
+import { RoleWithDetails } from '@/lib/supabase/types';
+import { useToast } from '@/hooks/use-toast';
+
+export default function RolesPage() {
+  const [roles, setRoles] = useState<RoleWithDetails[]>([]);
+  const [loading, setLoading] = useState(true);
+  const { toast } = useToast();
+
+  const loadRoles = async (filters?: any) => {
+    try {
+      const data = await fetchRoles(filters);
+      setRoles(data);
+    } catch (error: any) {
+      toast({
+        title: 'Error',
+        description: error.message,
+        variant: 'destructive',
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadRoles();
+  }, []);
+
+  const handleApply = async (roleId: string, coverLetter?: string) => {
+    try {
+      await applyToRole(roleId, coverLetter);
+      toast({
+        title: 'Success',
+        description: 'Application submitted successfully!',
+      });
+    } catch (error: any) {
+      toast({
+        title: 'Error',
+        description: error.message,
+        variant: 'destructive',
+      });
+    }
+  };
+
+  return (
+    <div className="container py-8 space-y-8">
+      <div>
+        <h1 className="text-4xl font-bold mb-2">Open Roles</h1>
+        <p className="text-muted-foreground">
+          Find the perfect role that matches your skills and experience
+        </p>
+      </div>
+
+      <RoleFilters onFilterChange={loadRoles} />
+
+      {loading ? (
+        <div className="text-center py-8">Loading roles...</div>
+      ) : (
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {roles.map((role) => (
+            <RoleCard
+              key={role.id}
+              role={role}
+              onApply={handleApply}
+            />
+          ))}
+          {roles.length === 0 && (
+            <div className="col-span-full text-center py-8 text-muted-foreground">
+              No roles found matching your criteria
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
